@@ -1,8 +1,10 @@
+from time import sleep
 from PyQt5.QtWidgets import ( 
     QMainWindow, 
     QLabel, 
-    QVBoxLayout, QWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QPushButton
+    QVBoxLayout, QWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QPushButton,
 )
+from PyQt5.QtCore import QTimer
 from models import Funcionario
 import utils
 
@@ -19,6 +21,10 @@ class MainForm(QMainWindow):
                 color: red;
             }
         """)
+
+        self.label_mensagem = QLabel()
+        self.label_mensagem.hide()
+        self.label_mensagem.setStyleSheet('color: green')
 
         self.label_nome = QLabel()
         self.label_nome.setText('Nome')
@@ -52,6 +58,7 @@ class MainForm(QMainWindow):
         space = QSpacerItem(0, 0, QSizePolicy.Fixed, QSizePolicy.Expanding)
 
         layout = QVBoxLayout()
+        layout.addWidget(self.label_mensagem)
         layout.addWidget(self.label_nome)
         layout.addWidget(self.line_edit_nome)
         layout.addWidget(self.label_sexo)
@@ -79,4 +86,13 @@ class MainForm(QMainWindow):
         funcionario.salario = float(self.line_edit_salario.text())
         funcionario.departamento = self.line_edit_departamento.text()
         funcionario.salvar()
+        self.label_mensagem.setVisible(True)
+        self.label_mensagem.setText('Cadastrado com sucesso')
         utils.limpar_componentes(self.componentes)
+        self.limpar_mensagem()
+
+    def limpar_mensagem(self):
+        self.timer = QTimer(self)
+        self.timer.setInterval(2000)
+        self.timer.timeout.connect(lambda : self.label_mensagem.hide())
+        self.timer.start()
