@@ -1,8 +1,12 @@
 .gitignore
 app.py
+controllers.py
 db.txt
 forms.py
+main.py
 main.ui
 models.py
 requirements.txt
 utils.py
+vendas.cflags
+vendas.cxxflags
