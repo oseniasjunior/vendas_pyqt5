@@ -9,6 +9,6 @@ QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)  # use highdpi i
 app = QApplication(sys.argv)
 
 main = MainForm()
-main.show()
+main.showMaximized()
 
 sys.exit(app.exec_())

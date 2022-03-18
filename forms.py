@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import (
     QMainWindow, 
     QLabel, 
     QVBoxLayout, QWidget, QLineEdit, QComboBox, QSpacerItem, QSizePolicy, QPushButton,
+    QTableWidget,
+    QTableWidgetItem
 )
 from PyQt5.QtCore import QTimer
 from models import Funcionario
@@ -55,6 +57,11 @@ class MainForm(QMainWindow):
         self.button_salvar.setText('Salvar')
         self.button_salvar.clicked.connect(self.salvar)
 
+        self.table_funcionarios = QTableWidget()
+        self.table_funcionarios.setColumnCount(4)
+        self.table_funcionarios.setHorizontalHeaderLabels(['Nome', 'Sexo', 'Salário', 'Departamento'])
+        self.table_funcionarios.setRowCount(0)
+
         space = QSpacerItem(0, 0, QSizePolicy.Fixed, QSizePolicy.Expanding)
 
         layout = QVBoxLayout()
@@ -68,7 +75,8 @@ class MainForm(QMainWindow):
         layout.addWidget(self.label_departamento)
         layout.addWidget(self.line_edit_departamento)
         layout.addWidget(self.button_salvar)
-        layout.addItem(space)
+        layout.addWidget(self.table_funcionarios)
+        # layout.addItem(space)
 
         self.componentes = QWidget()
         self.componentes.setLayout(layout)
@@ -77,6 +85,8 @@ class MainForm(QMainWindow):
 
         self.setWindowTitle('Meu primeiro formulário com PyQt5')
         self.setGeometry(60, 60, 800, 400)
+
+        self.popular_tabela()
 
 
     def salvar(self):
@@ -89,6 +99,7 @@ class MainForm(QMainWindow):
         self.label_mensagem.setVisible(True)
         self.label_mensagem.setText('Cadastrado com sucesso')
         utils.limpar_componentes(self.componentes)
+        self.popular_tabela()
         self.limpar_mensagem()
 
     def limpar_mensagem(self):
@@ -96,3 +107,27 @@ class MainForm(QMainWindow):
         self.timer.setInterval(2000)
         self.timer.timeout.connect(lambda : self.label_mensagem.hide())
         self.timer.start()
+
+    
+    def popular_tabela(self):
+        itens = Funcionario.listar()
+        self.table_funcionarios.setRowCount(len(itens))
+
+        for linha, funcionario in enumerate(itens):
+            nome = QTableWidgetItem()
+            nome.setText(funcionario.nome)
+
+            sexo = QTableWidgetItem()
+            sexo.setText('Masculino' if funcionario.sexo == 'M' else 'Feminino')
+
+            salario = QTableWidgetItem()
+            salario.setText(str(funcionario.salario))
+
+            departamento = QTableWidgetItem()
+            departamento.setText(funcionario.departamento)
+
+            self.table_funcionarios.setItem(linha, 0, nome)
+            self.table_funcionarios.setItem(linha, 1, sexo)
+            self.table_funcionarios.setItem(linha, 2, salario)
+            self.table_funcionarios.setItem(linha, 3, departamento)
+
