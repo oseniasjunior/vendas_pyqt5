@@ -27,14 +27,14 @@ QLabel, QLineEdit, QPushButton {
 	font-size: 14px;
 }
 
-QPushButton#btn_salvar {	
+QPushButton#btn_cadastrar {	
 	background-color: rgb(0, 170, 0);
 	color: rgb(255, 255, 255);
     border: none;
 }
 
-QPushButton#btn_fechar {	
-	background-color: rgb(170, 0, 0);
+QPushButton#btn_pesquisar {	
+	background-color: rgb(85, 170, 255);
 	color: rgb(255, 255, 255);
     border: none;
 }
@@ -60,131 +60,10 @@ QPushButton#btn_fechar {
        <item>
         <widget class="QLabel" name="lbl_titulo">
          <property name="text">
-          <string>CADASTRO E LISTAGEM DE FUNCIONÁRIOS</string>
+          <string>LISTAGEM DE FUNCIONÁRIO</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="componentes" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="lbl_mensagem">
-         <property name="styleSheet">
-          <string notr="true">color: green;</string>
-         </property>
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Nome</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="edt_nome">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Sexo</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cmb_sexo">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <item>
-          <property name="text">
-           <string>Masculino</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Feminino</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Salário</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="edt_salario">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Departamento</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="edt_departamento">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
          </property>
         </widget>
        </item>
@@ -193,9 +72,9 @@ QPushButton#btn_fechar {
     </item>
     <item>
      <widget class="QWidget" name="botoes" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="btn_fechar">
+        <widget class="QPushButton" name="btn_pesquisar">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -209,12 +88,12 @@ QPushButton#btn_fechar {
           </size>
          </property>
          <property name="text">
-          <string>Fechar</string>
+          <string>Atualizar</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btn_salvar">
+        <widget class="QPushButton" name="btn_cadastrar">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -228,7 +107,7 @@ QPushButton#btn_fechar {
           </size>
          </property>
          <property name="text">
-          <string>Salvar</string>
+          <string>Cadastrar</string>
          </property>
         </widget>
        </item>

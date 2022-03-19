@@ -1,5 +1,6 @@
 .gitignore
 app.py
+cadastrar.ui
 controllers.py
 db.txt
 forms.py
